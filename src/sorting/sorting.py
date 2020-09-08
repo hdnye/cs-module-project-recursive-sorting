@@ -9,20 +9,30 @@ def merge(arrA, arrB):
     
     # Your code here
     # set iterators 
-
+    i = 0
+    j = 0    
     # set vars for len(arr[x])    
+    arr1 = len(arrA)
+    arr2 = len(arrB)
     # create final output list
-
+    arr = []
     # while loop to iterate all el's
-
     # compare el's & append to merged list
-
-    # increment from list
-
-    # else stmt to append 2nd list
-    
+    while (i < arr1) and (j < arr2):
+        if(arrA[i]) < (arrB[j]):
+            arr.append(arrA[i])
+    # increment from list    
+            i += 1  
+    # else stmt to append 2nd list          
+        else: 
+            arr.append(arrB(j))
+            j += 1
     # if stmt to append list if any el's remain
-
+    if i == arr1:
+        arr.extend(arrB[:j])
+    else: 
+        arr.extend(arrA[i:])  
+ 
     return merged_arr
 
 # TO-DO: implement the Merge Sort function below recursively
@@ -32,43 +42,23 @@ def merge_sort(arr):
     if len(arr) <= 1:
         return arr
     
-    # if arr > 1:
     if len(arr) > 1:
     # divide arr
         mid = len(arr) // 2
         # assign vars
         lhs=arr[:mid]
-        rhs=arr[mid:]  
-
-        merge_sort(lhs)
-        merge_sort(rhs)
-        # lhs & rhs iterators
-        i = 0
-        j = 0
+        rhs=arr[mid:]                      
 
         # new list iterator
         k = 0
-        while i < len(lhs) and j < len(rhs):
-            if lhs[i] < rhs[j]:
-                arr[k] = lhs[i]
-                i += 1
-            else:
-                arr[k] = rhs[j]
-                j += 1
+       
 
         # for remaining 
-        while i < len(lhs):
-            arr[k] = lhs[i]
-            i += 1
-            k += 1
-        while j < len(rhs):
-            arr[k] = rhs[j]
-            j += 1
-            k += 1
+       
         
      # merge sorted halves
-    merge_sort(arr)
-    print(arr)
+    
+    return arr
        
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
