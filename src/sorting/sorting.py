@@ -1,10 +1,27 @@
+import sys
+
+sys.setrecursionlimit(10**6)
+
 # TO-DO: complete the helper function below to merge 2 sorted arrays
 def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
     merged_arr = [0] * elements
     
     # Your code here
+    # set iterators 
 
+    # set vars for len(arr[x])    
+    # create final output list
+
+    # while loop to iterate all el's
+
+    # compare el's & append to merged list
+
+    # increment from list
+
+    # else stmt to append 2nd list
+    
+    # if stmt to append list if any el's remain
 
     return merged_arr
 
@@ -22,6 +39,9 @@ def merge_sort(arr):
         # assign vars
         lhs=arr[:mid]
         rhs=arr[mid:]  
+
+        merge_sort(lhs)
+        merge_sort(rhs)
         # lhs & rhs iterators
         i = 0
         j = 0
@@ -45,12 +65,11 @@ def merge_sort(arr):
             arr[k] = rhs[j]
             j += 1
             k += 1
-
+        
      # merge sorted halves
-    merge_sort(arr)      
-    return arr   
-
-    
+    merge_sort(arr)
+    print(arr)
+       
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # utilize any extra memory
@@ -66,36 +85,36 @@ def merge_sort_in_place(arr, l, r):
 
 
 # Quick sort
-nums = [29, 84, 35, 22, 64, 97, 8, 83, 46, 58]
+# nums = [29, 84, 35, 22, 64, 97, 8, 83, 46, 58]
 
-def quicksort(arr):
-     # stop when there's only 1 element left in the arr
-    if len(arr) <= 1:
-         return arr
+# def quicksort(arr):
+#      # stop when there's only 1 element left in the arr
+#     if len(arr) <= 1:
+#          return arr
 
-    left, pivot, right = partition(arr) 
+#     left, pivot, right = partition(arr) 
 
-    sorted_left = quicksort(left)
-    sorted_right = quicksort(right)
+#     sorted_left = quicksort(left)
+#     sorted_right = quicksort(right)
 
-    sorted = sorted_left + [pivot] + sorted_right
-    return sorted
+#     sorted = sorted_left + [pivot] + sorted_right
+#     return sorted
 
 
-def partition(arr):
-    # choose pivot
-    pivot = arr[0]
+# def partition(arr):
+#     # choose pivot
+#     pivot = arr[0]
 
-    # divide array into chunks
-    left = []
-    right = []
+#     # divide array into chunks
+#     left = []
+#     right = []
     
-    # < on LHS, > on RHS
-    for el in arr[1:]:
-        if el < pivot:
-            left.append(el)
-        if el >= pivot:
-            right.append(el)
-    return left, pivot, right
+#     # < on LHS, > on RHS
+#     for el in arr[1:]:
+#         if el < pivot:
+#             left.append(el)
+#         if el >= pivot:
+#             right.append(el)
+#     return left, pivot, right
     
-print(quicksort(nums))
+# print(quicksort(nums))
