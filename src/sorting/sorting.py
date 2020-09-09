@@ -4,8 +4,8 @@ sys.setrecursionlimit(10**6)
 
 # TO-DO: complete the helper function below to merge 2 sorted arrays
 def merge(arrA, arrB):
-    elements = len(arrA) + len(arrB)
-    merged_arr = [0] * elements
+    # elements = len(arrA) + len(arrB)
+    # merged_arr = [0] * elements
     
     # Your code here
     # set iterators 
@@ -13,9 +13,9 @@ def merge(arrA, arrB):
     j = 0    
     # set vars for len(arr[x])    
     arr1 = len(arrA)
-    arr2 = len(arrB)
-    # create final output list
+    arr2 = len(arrB)    
     arr = []
+
     # while loop to iterate all el's
     # compare el's & append to merged list
     while (i < arr1) and (j < arr2):
@@ -25,15 +25,15 @@ def merge(arrA, arrB):
             i += 1  
     # else stmt to append 2nd list          
         else: 
-            arr.append(arrB(j))
+            arr.append(arrB[j])
             j += 1
     # if stmt to append list if any el's remain
     if i == arr1:
-        arr.extend(arrB[:j])
+        arr.extend(arrB[j:])
     else: 
-        arr.extend(arrA[i:])  
+        arr.extend(arrA[i:])
  
-    return merged_arr
+    return arr
 
 # TO-DO: implement the Merge Sort function below recursively
 def merge_sort(arr):
@@ -45,20 +45,10 @@ def merge_sort(arr):
     if len(arr) > 1:
     # divide arr
         mid = len(arr) // 2
-        # assign vars
-        lhs=arr[:mid]
-        rhs=arr[mid:]                      
 
-        # new list iterator
-        k = 0
-       
-
-        # for remaining 
-       
-        
-     # merge sorted halves
-    
-    return arr
+    return merge(merge_sort(arr[mid:]), merge_sort(arr[:mid]))        
+                      
+     
        
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
@@ -75,36 +65,36 @@ def merge_sort_in_place(arr, l, r):
 
 
 # Quick sort
-# nums = [29, 84, 35, 22, 64, 97, 8, 83, 46, 58]
+nums = [29, 84, 35, 22, 64, 97, 8, 83, 46, 58]
 
-# def quicksort(arr):
-#      # stop when there's only 1 element left in the arr
-#     if len(arr) <= 1:
-#          return arr
+def quicksort(arr):
+     # stop when there's only 1 element left in the arr
+    if len(arr) <= 1:
+         return arr
 
-#     left, pivot, right = partition(arr) 
+    left, pivot, right = partition(arr) 
 
-#     sorted_left = quicksort(left)
-#     sorted_right = quicksort(right)
+    sorted_left = quicksort(left)
+    sorted_right = quicksort(right)
 
-#     sorted = sorted_left + [pivot] + sorted_right
-#     return sorted
+    sorted = sorted_left + [pivot] + sorted_right
+    return sorted
 
 
-# def partition(arr):
-#     # choose pivot
-#     pivot = arr[0]
+def partition(arr):
+    # choose pivot
+    pivot = arr[0]
 
-#     # divide array into chunks
-#     left = []
-#     right = []
+    # divide array into chunks
+    left = []
+    right = []
     
-#     # < on LHS, > on RHS
-#     for el in arr[1:]:
-#         if el < pivot:
-#             left.append(el)
-#         if el >= pivot:
-#             right.append(el)
-#     return left, pivot, right
+    # < on LHS, > on RHS
+    for el in arr[1:]:
+        if el < pivot:
+            left.append(el)
+        if el >= pivot:
+            right.append(el)
+    return left, pivot, right
     
-# print(quicksort(nums))
+print(quicksort(nums))
